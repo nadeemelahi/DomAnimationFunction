@@ -1,7 +1,6 @@
 /* GNU v 3 license */
 var Anim = new function(){
    "use strict";
-   var that = this;
    var T = new function(){ //singleton
       this.id = "T -singleton";
       var items = [], len;
@@ -96,63 +95,52 @@ var Anim = new function(){
       return this.AY*t*t*t + this.BY*t*t + this.CY*t + this.y0;
    };
 
-   var Animator = function($n, p, s, f, d, t,  cb){
-      this.$node = $n; this.property = p;
+   
+   var Animator = function($n, p, u, s, f, d, t,  cb){
+      this.$node = $n; this.property = p; this.unit = u;
       this.start = s; this.finish = f; this.duration = d;
       //console.log(E[t][3]);
-      this.tween = new BZC([that.E[t][0], that.E[t][1], that.E[t][2], that.E[t][3]]); 
+      this.tween = new BZC([E[t][0], E[t][1], E[t][2], E[t][3]]); 
       this.callback = cb;
       this.elapsed = 0; this.current = null;
       this.span = f-s;
 
       if(p === "opacity"){
-      this.$node.style[p] = s;
-      this.tick = this.tick2;
+	 this.$node.style[p] = s;
+	 this.tick = this.tick;
       } else {
-      this.$node.style[p] = s + "px";
-      this.tick = this.tick1;
+	 this.$node.style[p] = s + u;
+	 this.tick = this.tick;
       }
 
       T.add(this);
    }
-   Animator.prototype.tick = function(){};
-   Animator.prototype.tick1 = function(dt){
+   Animator.prototype.tick = function(dt){
 
       this.elapsed += dt;
       if(this.elapsed >= this.duration){
-	 this.$node.style[this.property] = this.end + "px";
+	 this.$node.style[this.property] = this.end + this.unit;
 	 T.rm(this);
 	 if(this.callback) this.callback();
       } else {
 	 this.current = this.tween.get( this.elapsed/this.duration );
-	 this.$node.style[this.property] = this.start + this.current*this.span + "px";
-      };
+	 this.$node.style[this.property] = this.start + this.current*this.span + this.unit;
+      }
    };
-   Animator.prototype.tick2 = function(dt){
-      this.elapsed += dt;
-      if(this.elapsed >= this.duration){
-	 this.$node.style[this.property] = this.end;
-	 T.rm(this);
-	 if(this.callback) this.callback();
-      } else {
-	 this.current = this.tween.get( this.elapsed/this.duration );
-	 this.$node.style[this.property] = this.start + this.current*this.span;
-      };
-   };
-   this.go = function(p1,p2,p3,p4,p5,p6,p7){
+   
+   this.go = function(p1,p2){
      //console.log(arguments.length); //requires 6, unless object then 2
-      if(arguments.length === 7)
-	 new Animator(p1,p2,p3,p4,p5,p6,p7);
-      else if(arguments.length === 2)
-	 new Animator(
+      	 new Animator(
 	       p1.$node,
 	       p1.property,
+	       p1.unit,
 	       p1.start,
 	       p1.finish,
 	       p1.duration,
 	       p1.tween,
 	       p2          );
    };
+
 
 };
 
