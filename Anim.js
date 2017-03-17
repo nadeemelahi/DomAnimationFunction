@@ -14,7 +14,12 @@ var Anim = new function(){
 	 len=items.length;
       };
       var dt,ct,lt=Date.now();
-      var raf = window.requestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || function(cb){setTimeout(cb,30);};
+      var raf = window.requestAnimationFrame || 
+	  window.msRequestAnimationFrame || 
+	  window.oRequestAnimationFrame || 
+	  window.mozRequestAnimationFrame || 
+	  indow.webkitRequestAnimationFrame || 
+	  function(cb){setTimeout(cb,30);};
       var i,t=0;
       function ticker(){
 	 ct=Date.now();
