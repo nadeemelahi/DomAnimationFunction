@@ -1,19 +1,14 @@
 # DomAnimationFunction
 Animate dom nodes. 
 
-Only works for nodes that have have style property in the format of x number of px's and opacity.
+Only works for nodes that have have style property in the format of x number of units's or "" if none like opacity.
 
 As in: $node.style.marginLeft = "0" + "px";
 
-or     $node.style.top = "10" + "px";
-
-or     $node.style.height = "100" + "px";
+or     $node.style.top = "10" + "%";
 
 
-
-and Opacity as in: $node.style.opacity = 0.7;
-
--with out appending "px".
+and Opacity as in: $node.style.opacity = 0.7 + ""; //resulting in just 0.7;
 
 See: http://www.webscripts.biz/scrap/Anim/
 
