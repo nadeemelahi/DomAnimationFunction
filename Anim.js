@@ -129,7 +129,6 @@ var Anim = new function(){
    };
    
    this.go = function(p1,p2){
-     //console.log(arguments.length); //requires 6, unless object then 2
       	 new Animator(
 	       p1.$node,
 	       p1.property,
