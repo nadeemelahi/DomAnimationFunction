@@ -19,17 +19,25 @@
       <script type="text/javascript" charset="utf-8">
 
 var $button01 = document.getElementById("button01");
-Anim.go($button01, "marginLeft", 0, 400, 2000, "ease", function(){
+var config = {
+   $node: $button01,
+   property: "marginLeft",
+   unit: "px",
+   start: 0,
+   finish: 400,
+   duration: 2000,
+   tween: "myease"   // jQuery easings area included -can use here
+};
+Anim.setE("myease",[0.25,0.1,0.25,1]); //same control points as jquery ease
+Anim.go(config, function(){
    console.log("done marginLeft change from 0 to 400 in 2000ms");
 
-   var config = {
-      $node: $button01,
-      property: "opacity",
-      start: 1,
-      finish: 0,
-      duration: 5000,
-      tween: "ease"
-   };
+   config.property = "opacity";
+   config.unit = "";
+   config.start = 1;
+   config.finish = 0;
+   config.duration = 5000;
+
    Anim.go(config, function(){
       console.log('done opacity change from 1 to 0 in 5000s');
 
@@ -42,6 +50,7 @@ Anim.go($button01, "marginLeft", 0, 400, 2000, "ease", function(){
 	 config.start = 400;
 	 config.finish = 0;
 	 config.property = "marginLeft";
+	 config.unit = "px";
 
 	 Anim.go(config, null);
 	 console.log("and heading back to beginning position of marginLeft = 0");
@@ -50,7 +59,8 @@ Anim.go($button01, "marginLeft", 0, 400, 2000, "ease", function(){
 
 });
 console.log("providing custom easings:");
-console.log("Anim.E['myCustomEasingsName'] = [cp1x,cp1y,cp2x,cp2y]");
+console.log("Anim.setE('myCustomEasingsName', [cp1x,cp1y,cp2x,cp2y])");
+
       </script>
    </body>
 </html>
