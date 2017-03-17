@@ -16,3 +16,4 @@ and Opacity as in: $node.style.opacity = 0.7;
 -with out appending "px".
 
 See: http://www.webscripts.biz/scrap/Anim/
+and/or http://www.webscripts.biz/scrap/Anim2/
