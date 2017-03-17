@@ -1,4 +1,4 @@
-# DomAnimationEngine
+# DomAnimationFunction
 Animate dom nodes. 
 
 Only works for nodes that have have style property in the format of x number of px's and opacity.
