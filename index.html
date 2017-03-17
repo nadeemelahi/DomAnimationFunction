@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title> ex using Anim = {}</title>
+   </head>
+   <style>
+#button01{
+   width: 150px; height: 40px; 
+   text-align: center; 
+   background-color: #aaf;
+   border:none;
+}
+   </style>
+   <body>
+      <h1> ex using Anim = {}</h1>
+      <button id="button01">button01</button>
+      <script type="text/javascript" charset="utf-8" src="Anim.js"></script>
+      <script type="text/javascript" charset="utf-8">
+
+var $button01 = document.getElementById("button01");
+Anim.go($button01, "marginLeft", 0, 400, 2000, "ease", function(){
+   console.log("done marginLeft change from 0 to 400 in 2000ms");
+
+   var config = {
+      $node: $button01,
+      property: "opacity",
+      start: 1,
+      finish: 0,
+      duration: 5000,
+      tween: "ease"
+   };
+   Anim.go(config, function(){
+      console.log('done opacity change from 1 to 0 in 5000s');
+
+      config.start = 0;
+      config.finish = 1;
+
+      Anim.go(config, function(){
+	 console.log('done opacity change from 0 to 1 in 1000s');
+
+	 config.start = 400;
+	 config.finish = 0;
+	 config.property = "marginLeft";
+
+	 Anim.go(config, null);
+	 console.log("and heading back to beginning position of marginLeft = 0");
+      });
+   });
+
+});
+console.log("providing custom easings:");
+console.log("Anim.E['myCustomEasingsName'] = [cp1x,cp1y,cp2x,cp2y]");
+      </script>
+   </body>
+</html>
+
