@@ -5,7 +5,8 @@ var Anim = new function(){
       this.id = "T -singleton";
       var items = [], len;
       this.add=function(item){
-	 items.push(item);len=items.length;
+	 items.push(item);
+	 len=items.length;
       };
       var rmIdx;
       this.rm=function(item){
@@ -18,7 +19,7 @@ var Anim = new function(){
 	  window.msRequestAnimationFrame || 
 	  window.oRequestAnimationFrame || 
 	  window.mozRequestAnimationFrame || 
-	  indow.webkitRequestAnimationFrame || 
+	  window.webkitRequestAnimationFrame || 
 	  function(cb){setTimeout(cb,30);};
       var i,t=0;
       function ticker(){
