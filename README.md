@@ -10,6 +10,3 @@ or     $node.style.top = "10" + "%";  // config.unit = "%";
 
 and Opacity as in: $node.style.opacity = 0.7 + ""; //resulting in just 0.7;
 
-See: http://www.webscripts.biz/scrap/Anim/
-
-and/or http://www.webscripts.biz/scrap/Anim2/
